@@ -50,14 +50,14 @@ const Login = props => {
           </Body>
         </ListItem>
         <Button
-          onPress={() => props.navigation.replace("ListScreen")}
+          onPress={() => props.navigation.replace("Profile")}
           full
           success
         >
           <Text>Login</Text>
         </Button>
         <Button
-          onPress={() => props.navigation.replace("ListScreen")}
+          onPress={() => props.navigation.replace("Profile")}
           full
           warning
         >
