@@ -20,6 +20,8 @@ import styles from "./styles";
 // Data
 import cafes from "../../data/cafes";
 
+import CartIcon from "../CartIcon";
+
 class CoffeeDetail extends Component {
   state = {
     drink: "Cappuccino",
@@ -39,8 +41,9 @@ class CoffeeDetail extends Component {
   };
 
   render() {
+    const shopID = this.props.navigation.getParam("shopID");
+    const cafe = cafes.find(cafe => shopID === cafe.id);
     if (!cafes) return <Content />;
-    const cafe = cafes[0];
     return (
       <Content>
         <List>
@@ -94,3 +97,12 @@ class CoffeeDetail extends Component {
 }
 
 export default CoffeeDetail;
+
+CoffeeDetail.navigationOptions = ({ navigation }) => {
+  const shopID = navigation.getParam("shopID");
+  const cafe = cafes.find(cafe => shopID === cafe.id);
+  return {
+    title: cafe.name,
+    headerRight: <CartIcon />
+  };
+};
